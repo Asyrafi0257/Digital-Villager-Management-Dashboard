@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 100%;
+}
+
+.contain{
+    height: 8vh;
+    background-color: #000;
+    color: #ffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contain h2 {
+    font-size: 13px;
+}

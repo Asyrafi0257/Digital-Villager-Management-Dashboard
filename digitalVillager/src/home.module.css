@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Bebas+Neue&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+}
+.container {
+    width: 100%;
+    height: 100%;
+}
+.contain {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   flex-direction: row;
+   margin-top: 10px;
+   
+}
+.images img{
+   height: 250px;
+   width: 300px;
+   border-radius: 15px;
+}
+.title {
+    width: 65vw;
+}
+.images{
+    width: 35vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+.titleInfo{
+    display: flex;
+    height: 30vw;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    
+}
+.titleInfo h3 {
+    font-size: 45px;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+

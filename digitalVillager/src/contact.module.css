@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Bebas+Neue&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width: 100%;
+    height: 100%;
+}
+.contain{
+    display: flex;
+    flex-direction: row;
+    height: 90vh;
+}
+.contactInfo{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 15px;
+    font-size:20px;
+    align-items: center;
+}
+.title{
+    letter-spacing: 2px;
+    font-weight: 400;
+    font-family: "Bebas Neue", sans-serif;
+    font-style: normal;
+}
+.contactInfo p {
+    font-weight: normal;
+    font-weight: 100;
+    font-size: 15px;
+    margin: 15px;
+}
+.contact{
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+.icon{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 3px 0 #000;
+    padding: 3px;
+}
+.icon p{
+    margin-left: 10px;
+}
+.icon:hover{
+    background-color: #000;
+    color: #ffff;
+    border-radius: 10px;
+    padding: 5px;
+}
+.contactForm{
+    display: flex;
+    width: 500px;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    font-size: 20px;
+}
+.form{
+    height: 300px;
+    width: 300px;
+    background-color: #000;
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    padding-top: 20px;
+    margin-top: 20px;
+    font-weight: 400;
+    font-family: "Bebas Neue", sans-serif;
+    font-style: normal;
+    box-shadow: 0 0 2px 3px #0000;
+}
+.label{
+    letter-spacing: 2px;
+    font-size: 18px;
+}
+.input{
+    height: 15px;
+    width: 200px;
+    border-radius: 8px;
+    padding: 5px;
+    border: none;
+}
+input:focus{
+    outline: none;
+}
+.textarea{
+    height: 100px;
+    width: 200px;
+    border-radius: 5px;
+    padding: 5px;
+}
+.textarea:focus{
+    outline: none;
+}
+.btn{
+    height: 28px;
+    width: 50px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    float: right;
+    font: 20px;
+    margin-right: 5px;
+    font-family: 300;
+    cursor: pointer;
+    margin-top: 5px;
+}
