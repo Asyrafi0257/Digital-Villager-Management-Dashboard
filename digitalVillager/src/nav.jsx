@@ -1,4 +1,7 @@
 import styles from "./nav.module.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
 
@@ -17,7 +20,13 @@ export default function Navbar() {
                         <li className={styles.btn} onClick={() => scrollToSection("about")}>About</li>
                         <li className={styles.btn} onClick={() => scrollToSection("contact")}>Contact Us</li>
                         <li className={styles.btn}>Login</li>
-                        <li className={styles.btn}>Sign Up</li>
+                        <li className={styles.btnStarted}>
+                            <Link to="/villager" className={styles.link}>
+                                Get Started
+                                <FontAwesomeIcon className={styles.arrowRight} icon={faArrowRight} />
+                            </Link>
+                            
+                        </li>
                     </ul>
                 </div>
             </div>

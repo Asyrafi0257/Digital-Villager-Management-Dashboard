@@ -15,17 +15,17 @@ export default function Contact() {
                     </div>
                     <p>If you have questions, require assistance, or need to report an emergency-related incident, please contact us using the information below.</p>
                     <div className={styles.contact}>
-                        <div className={styles.icon}>
+                        <div className={styles.icons}>
                             <FontAwesomeIcon icon={faFacebook} className={styles.icon}/>
                             <p>Facebook</p>
 
                         </div>
-                        <div className={styles.icon}>
+                        <div className={styles.icons}>
                             <FontAwesomeIcon icon={faTiktok} />
                             <p>TikTok</p>
 
                         </div>
-                        <div className={styles.icon}>
+                        <div className={styles.icons}>
                             <FontAwesomeIcon icon={faInstagram} />
                             <p>Instagram</p>
                         </div>  

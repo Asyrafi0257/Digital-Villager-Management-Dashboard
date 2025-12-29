@@ -28,7 +28,7 @@
 .menu ul{
     display: flex;
     flex-direction: row;
-    width: 300px;
+    width: 380px;
     
 }
 .menu ul li {
@@ -59,4 +59,22 @@
 }
 .btn:hover:after{
     width: 100%;
+}
+.btnStarted .link{
+    color: white;
+    background-color: #000;
+    border: none;
+    border-radius: 8px;
+    padding-left: 5px;
+    padding-right: 4px;
+    text-decoration: none;
+}
+.arrowRight{
+    margin-left: 5px;
+    font-size: 18px;
+}
+
+.btnStarted :hover{
+    background-color: #ffff;
+    color: #000;
 }

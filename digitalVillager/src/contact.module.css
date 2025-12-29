@@ -40,7 +40,7 @@
     flex-direction: column;
     cursor: pointer;
 }
-.icon{
+.icons{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -50,10 +50,10 @@
     box-shadow: 0 0 3px 0 #000;
     padding: 3px;
 }
-.icon p{
+.icons p{
     margin-left: 10px;
 }
-.icon:hover{
+.icons:hover{
     background-color: #000;
     color: #ffff;
     border-radius: 10px;

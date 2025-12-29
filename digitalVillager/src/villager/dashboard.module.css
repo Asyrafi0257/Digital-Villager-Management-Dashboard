@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Bebas+Neue&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+/* .container{
+    width: 100%;
+    margin: 100%;
+} */
+.contain{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+.sidebar{
+    background-color: #000000;
+    color: white;
+    width: 130px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.containTitle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+.title{
+    font-family: "BBH Bartle", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    font-style: normal;
+    margin-bottom: 5px;
+}
+.titleVillager{
+    font-size: 15px;
+}
+.list{
+    margin-top: 80px;
+    cursor: pointer;
+    width: 100%;
+}
+.icons{
+    margin-right: 8px;
+}
+.list ul li {
+  list-style: none;
+  padding: 5px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  list-style-type: none;
+    margin-left: 5px;
+    margin-bottom: 20px;
+    margin-right: 5px;
+}
+
+/* Hover effect */
+.list ul li:hover {
+  background-color: #eeeeee;
+  color: #000;
+}
+
+/* Active / clicked item */
+.list ul li.active {
+  background-color: #ffffff;
+  color: #000;
+}
+.context{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    height: 100vh;
+}
