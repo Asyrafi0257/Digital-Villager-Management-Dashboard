@@ -1,0 +1,227 @@
+.parent{
+    height: 380px;
+    width: 700px;
+    padding-bottom: 20px;
+    padding: 10px;
+}
+.container{
+    margin-bottom: 16px;
+}
+.title{
+    margin: 0 0 12px 0;
+    font-size: 20px;
+    font-weight: 600px;
+}
+.legend{
+    display: flex;
+    gap: 16px;
+    flex-Wrap: wrap;
+    padding: 12px;
+    background: #f8f9fa;
+    border-Radius: 8px;
+    font-Size: 13px;
+    margin-Bottom: 12px
+}
+.show{
+   font-weight: 600;
+   margin-right: 8px;
+}
+.containCritical{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.spanCritical{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #C62828;
+    display: inline-block;
+    border: 2px solid #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.invest{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.spanInvest{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #1E88E5;
+    display: inline-block;
+    border: 2px solid #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0,3);
+}
+.resolve{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.spanResolve{
+      width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #1E88E5;
+    display: inline-block;
+    border: 2px solid #43A047;
+    box-shadow: 0 1px 3px rgba(0,0,0,0,3);
+}
+.hidden{
+    margin-left: auto;
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+}
+.spanDisplay{
+    font-weight: 500;
+}
+.spanHidden{
+    color: #666;
+}
+.containerPadding{
+    padding: 10px 12px;
+    background: #e3f2fd;
+    border: 1px solid #2196f3;
+    border-Radius: 6px;
+    font-Size: "13px";
+    color: #1565c0;
+    margin-Bottom: 12px;
+    display: flex;
+    align-Items: center;
+    gap: 8px;
+}
+.spanPendding{
+    font-size: 16px;
+
+}
+.loading{
+    padding: 8px 12px; 
+    background: #e3f2fd;
+    border-Radius: 4px;
+    font-Size: 14px;
+    margin-Bottom: 12px
+}
+.warning{
+    padding: 12px; 
+    background: "#fff3e0"; 
+    border: 2px solid #ff9800;
+    border-Radius: 8px;
+    font-Size: 14px;
+    color: #e65100;
+    margin-Bottom: 12px
+}
+.warningText{
+    margin-top: 6px;
+    font-size: 13px;
+    color: #f57c00;
+}
+.mapContainer{
+    height: 100%;
+    width: 100%;
+    border-Radius: 12px;
+    border: 2px solid #e0e0e0;
+    box-Shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.validIncident{
+    position: "absolute";
+    top: "50%";
+    left: "50%";
+    transform: translate(-50%, -50%);
+    z-Index: 1000;
+    background: #ffffff;
+    padding: 24px 32px;
+    border-Radius: 12px;
+    box-Shadow: 0 4px 20px rgba(0,0,0,0.15);
+    text-Align: center;
+}
+.validEmoji{
+    font-size: 56px;
+    margin-bottom: 12px;
+}
+.validNoActive{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+}
+.containerCount{
+    font-size: 14px;
+    color: #666;
+}
+.popupContainer {
+    min-width: 240px;
+    font-family: system-ui, sans-serif;
+}
+.headerContain{
+   color: white;
+    padding: 12px;
+    margin: -10px -10px 12px -10px;
+    border-Radius: 4px 4px 0 0;
+    font-Weight: 600;
+    font-Size: 16px;
+    display: flex;
+    align-Items: center;
+    gap: 8px
+}
+.spanEmoji{
+    font-size: 24px;
+}
+.typeContain{
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.statusContain{
+    font-size: 11px;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+}
+.containerTitle{
+    padding: 0 4px;
+}
+.title{
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
+.description{
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+}
+.location{
+    margin-bottom: 6px;
+    font-size: 13px;
+    display: flex;
+    align-items: start;
+    gap: 6px;
+}
+.reporterName{
+    margin-bottom: 5px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.reporterPhone{
+    margin-bottom: 6px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.createdAt{
+    font-Size: 12px; 
+    color: #999;
+    margin-Top: 10px;
+    padding-Top: 10px;
+    border-Top: 1px solid #eee;
+    display: flex;
+    align-Items: center;
+    gap: 6px;
+}

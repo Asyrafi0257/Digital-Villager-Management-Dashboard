@@ -2,6 +2,10 @@ import { useState } from "react";
 import styles from "./dashboard.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faDownload, faEye } from '@fortawesome/free-solid-svg-icons';
+import DashboardStat from "./dashStat";
+import IncidentMap from "./incidentMap";
+import IncidentForm from "./incidentForm";
+import ViewApprove from "./viewApprove"
 
 export default function Dashboard() {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -40,8 +44,19 @@ export default function Dashboard() {
 
         {/* Content Area */}
         <div className={styles.context}>
-          {activeIndex !== null ? <p>{menuItems[activeIndex].text}</p> : <p>Dashboard</p>}
-        </div>
+  {       activeIndex === 0 && (
+            <>
+              <DashboardStat />
+              <IncidentMap />
+            </>
+          )}
+
+            {activeIndex === 1 && <IncidentForm />}
+
+            {activeIndex === 2 && <ViewApprove />}
+      </div>
+
+
       </div>
     </div>
   );

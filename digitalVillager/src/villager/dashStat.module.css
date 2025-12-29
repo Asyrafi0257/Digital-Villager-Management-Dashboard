@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Bebas+Neue&display=swap');
+
+.loading {
+    padding: 20px;
+    text-align: center;
+}
+.container{
+    padding: 20px;
+    border-Radius: 8px;
+    margin-Bottom: 20px;
+    margin-top: 0;
+    }
+
+.title{
+    font-family: "BBH Bartle", sans-serif;
+    font-weight: 400;
+    font-size: 25px;
+    color: "#333";
+    margin-bottom: 10px;
+    margin-top: 20px;
+    }
+
+.sectionTitle{
+      font-Size: 18px;
+      font-Weight: "bold";
+      margin-Bottom: 15px;
+      color: "#333";
+      display: flex;
+      justify-content: center;
+    }
+.listItem{
+      display: "flex";
+      justify-content: space-between;
+      padding: 10px;
+      border-Bottom: 1px solid #eee;
+      font-Size: 14px;
+    }
+strong{
+    float: right;
+}
+.spanItem{
+    text-transform: capitalize;
+}
+.sectionRecent{
+    margin-top: 20px;
+    background-Color: #ffffff;
+    padding: 20px;
+    border-Radius: 8px;
+    box-Shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 760px;
+    overflow-y: auto;
+    height: 60vh;
+
+}
+.recentTable{
+      width: "100%";
+      border-Collapse: "collapse";
+    }
+.tableHeader{
+      background-Color: #f9f9f9;
+      padding: 10px;
+      text-Align: left;
+      font-Weight: bold;
+      border-Bottom: 2px solid #ddd;
+    }
+.tableCell{
+      padding: 10px;
+      border-Bottom: 1px solid #eee;
+    }
+.statusBadge{
+      padding: 4px 8px;
+      border-Radius: 4px;
+      font-Size: 12px;
+      font-Weight: bold;
+      color: white
+    }
+.spanTableCell{
+    text-transform: capitalize;
+}

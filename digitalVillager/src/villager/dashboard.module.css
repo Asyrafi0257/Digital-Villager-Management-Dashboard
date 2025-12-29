@@ -3,6 +3,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 /* .container{
     width: 100%;
@@ -16,10 +17,12 @@
 .sidebar{
     background-color: #000000;
     color: white;
-    width: 130px;
+    width: 140px;
+    height: 100vh;
     padding: 5px;
     display: flex;
     flex-direction: column;
+    position: fixed;
     
 }
 .containTitle{
@@ -73,9 +76,12 @@
 }
 .context{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: start;
     align-items: center;
-    width: 80vw;
-    height: 100vh;
+    width: 90vw;
+    height: 200vh;
+    margin-left:130px;
+    padding-left: 20px;
+    
 }
