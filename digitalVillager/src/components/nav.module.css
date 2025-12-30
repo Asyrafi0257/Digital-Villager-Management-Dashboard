@@ -55,11 +55,16 @@
     bottom: -5px;
     transition: 0.3s;
 }
-.btn:hover{
+.btn:hover,
+.btn .link:hover{
     color: blue;
 }
 .btn:hover:after{
     width: 100%;
+}
+.btn .link{
+    text-decoration: none;
+    color: #000000;
 }
 .btnStarted .link{
     color: white;

@@ -1,5 +1,5 @@
-import Plan from "./assets/images/plan.jpg"
-import styles from "./home.module.css";
+import Plan from "../assets/images/plan.jpg"
+import styles from "../components/home.module.css";
 
 export default function Home(){
     return (

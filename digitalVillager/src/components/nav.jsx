@@ -19,7 +19,12 @@ export default function Navbar() {
                         <li className={styles.btn} onClick={() => scrollToSection("home")}>Home</li>
                         <li className={styles.btn} onClick={() => scrollToSection("about")}>About</li>
                         <li className={styles.btn} onClick={() => scrollToSection("contact")}>Contact Us</li>
-                        <li className={styles.btn}>Login</li>
+                        <li className={styles.btn}>
+                            <Link to="/login" className={styles.link}>
+                                Login
+                            </Link>
+                            
+                        </li>
                         <li className={styles.btnStarted}>
                             <Link to="/villager" className={styles.link}>
                                 Get Started

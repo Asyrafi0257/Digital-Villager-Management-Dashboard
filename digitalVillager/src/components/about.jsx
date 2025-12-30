@@ -1,8 +1,8 @@
-import styles from "./about.module.css";
-import Goal from "./assets/images/goal.jpg";
-import Features from "./assets/images/features1.jpg";
-import TargetUser from './assets/images/targetUser.jpg';
-import Emergency from "./assets/images/emergency2.jpg"
+import styles from "../components/about.module.css";
+import Goal from "../assets/images/goal.jpg";
+import Features from "../assets/images/features1.jpg";
+import TargetUser from '../assets/images/targetUser.jpg';
+import Emergency from "../assets/images/emergency2.jpg"
 
 export default function About() {
     return (

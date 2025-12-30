@@ -1,10 +1,12 @@
-import Home from "./home";
-import Navbar from "./nav";
-import About from "./about";
-import Footer from "./footer";
-import Contact from "./contact";
+import Home from "./components/home";
+import Navbar from "./components/nav";
+import About from "./components/about";
+import Footer from "./components/footer";
+import Contact from "./components/contact";
 import Dashboard from "./villager/dashboard";
+import Login from "./auth/login";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
+import { AuthProvider } from "./auth/authContext";
 
 function LandingPage() {
   return(
@@ -21,12 +23,16 @@ function LandingPage() {
 function App() {
   return (
     <div>
-     <BrowserRouter>
-      <Routes>
+      <AuthProvider>
+        <BrowserRouter>
+        <Routes>
         <Route path="/" element={<LandingPage/>}></Route>
         <Route path="/villager" element={<Dashboard/>}/>
+        <Route path="/login" element={<Login/>}></Route>
       </Routes>
      </BrowserRouter>
+      </AuthProvider>
+     
     </div>
   )
 }
