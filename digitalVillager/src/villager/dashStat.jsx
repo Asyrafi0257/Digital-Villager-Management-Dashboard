@@ -41,45 +41,48 @@ export default function DashboardStats() {
       {/* Recent Incidents */}
       <div className={statsStyle.sectionRecent}>
         <div className={statsStyle.sectionTitle}>Recent Incidents</div>
-        {stats.recent.length > 0 ? (
-          <table className={statsStyle.recentTable}>
-            <thead>
-              <tr>
-                <th className={statsStyle.tableHeader}>ID</th>
-                <th className={statsStyle.tableHeader}>Type</th>
-                <th className={statsStyle.tableHeader}>Title</th>
-                <th className={statsStyle.tableHeader}>Location</th>
-                <th className={statsStyle.tableHeader}>Status</th>
-                <th className={statsStyle.tableHeader}>Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {stats.recent.map((incident) => (
-                <tr key={incident.id}>
-                  <td className={statsStyle.tableCell}>#{incident.id}</td>
-                  <td className={statsStyle.tableCell}>
-                    <span className={statsStyle.spanTableCell}>{incident.type}</span>
-                  </td>
-                  <td className={statsStyle.tableCell}>{incident.title}</td>
-                  <td className={statsStyle.tableCell}>{incident.location || "N/A"}</td>
-                  <td className={statsStyle.tableCell}>
-                    <span
-                        className={statsStyle.statusBadge}
-                        style={{ backgroundColor: getStatusColor(incident.status) }}
-                    >
-                      {incident.status}
-                    </span>
-                  </td>
-                  <td className={statsStyle.tableCell}>
-                    {new Date(incident.created_at).toLocaleDateString()}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <div className={statsStyle.listItem}>No recent incidents</div>
-        )}
+        <div  className={statsStyle.tableContain}>
+          {stats.recent.length > 0 ? (
+                    <table className={statsStyle.recentTable}>
+                      <thead>
+                        <tr>
+                          <th className={statsStyle.tableHeader}>ID</th>
+                          <th className={statsStyle.tableHeader}>Type</th>
+                          <th className={statsStyle.tableHeader}>Title</th>
+                          <th className={statsStyle.tableHeader}>Location</th>
+                          <th className={statsStyle.tableHeader}>Status</th>
+                          <th className={statsStyle.tableHeader}>Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {stats.recent.map((incident) => (
+                          <tr key={incident.id}>
+                            <td className={statsStyle.tableCell}>#{incident.id}</td>
+                            <td className={statsStyle.tableCell}>
+                              <span className={statsStyle.spanTableCell}>{incident.type}</span>
+                            </td>
+                            <td className={statsStyle.tableCell}>{incident.title}</td>
+                            <td className={statsStyle.tableCell}>{incident.location || "N/A"}</td>
+                            <td className={statsStyle.tableCell}>
+                              <span
+                                  className={statsStyle.statusBadge}
+                                  style={{ backgroundColor: getStatusColor(incident.status) }}
+                              >
+                                {incident.status}
+                              </span>
+                            </td>
+                            <td className={statsStyle.tableCell}>
+                              {new Date(incident.created_at).toLocaleDateString()}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  ) : (
+                    <div className={statsStyle.listItem}>No recent incidents</div>
+                  )}
+        </div>
+        
       </div>
     </div>
   );

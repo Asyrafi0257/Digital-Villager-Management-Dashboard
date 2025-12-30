@@ -24,6 +24,7 @@
 .menu {
     display: flex;
     align-items: center;
+    margin-top: 15px;
 }
 .menu ul{
     display: flex;

@@ -1,21 +1,33 @@
 import { useState } from "react";
 import styles from "./dashboard.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faDownload, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faDownload, faEye, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from "react-router-dom";
+
 import DashboardStat from "./dashStat";
 import IncidentMap from "./incidentMap";
 import IncidentForm from "./incidentForm";
-import ViewApprove from "./viewApprove"
+import ViewApprove from "./viewApprove";
 
 export default function Dashboard() {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const navigate = useNavigate();
 
   const menuItems = [
     { icon: faHouse, text: "Dashboard" },
     { icon: faDownload, text: "Submit Incident" },
     { icon: faEye, text: "View Approve" },
+    { icon : faRightFromBracket, text : "Back Page" },
   ];
 
+  //handle back page
+  const handleBackPage = (index) => {
+    if(index === 3){
+      navigate(-1);
+    } else {
+      setActiveIndex(index);
+    }
+}
   return (
     <div className={styles.container}>
       <div className={styles.contain}>
@@ -32,7 +44,7 @@ export default function Dashboard() {
                 <li
                   key={index}
                   className={activeIndex === index ? styles.active : ""}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => handleBackPage(index)}
                 >
                   <FontAwesomeIcon icon={item.icon} className={styles.icons} />
                   {item.text}
@@ -44,16 +56,16 @@ export default function Dashboard() {
 
         {/* Content Area */}
         <div className={styles.context}>
-  {       activeIndex === 0 && (
+ 
+          {activeIndex === 0 && (
             <>
               <DashboardStat />
               <IncidentMap />
             </>
           )}
-
             {activeIndex === 1 && <IncidentForm />}
-
             {activeIndex === 2 && <ViewApprove />}
+            
       </div>
 
 

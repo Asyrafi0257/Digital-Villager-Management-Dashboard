@@ -89,9 +89,9 @@
     font-size: 18px;
 }
 .input{
-    height: 15px;
+    height: 25px;
     width: 200px;
-    border-radius: 8px;
+    border-radius: 5px;
     padding: 5px;
     border: none;
 }

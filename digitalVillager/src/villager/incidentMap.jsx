@@ -188,7 +188,7 @@ export default function IncidentMap() {
             <span className={style.spanResolve}></span>
             <span>Resolved</span>
           </div>
-          <div className={style.hidden}>
+          {/* <div className={style.hidden}>
             <span className={style.spanDisplay}>
               Displayed: {displayedCount}
             </span>
@@ -197,11 +197,11 @@ export default function IncidentMap() {
                 Hidden (Pending): {pendingCount}
               </span>
             )}
-          </div>
+          </div> */}
         </div>
 
         {/* Info banner about pending incidents */}
-        {pendingCount > 0 && (
+        {/* {pendingCount > 0 && (
           <div className={style.containerPadding}>
             <span className={style.spanPendding}>ℹ️</span>
             <span>
@@ -209,7 +209,7 @@ export default function IncidentMap() {
               They will appear once their status changes to investigating, critical, or resolved.
             </span>
           </div>
-        )}
+        )} */}
 
         {loading && (
           <div className={style.loading}>

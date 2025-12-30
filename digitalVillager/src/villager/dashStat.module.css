@@ -22,9 +22,9 @@
 
 .sectionTitle{
       font-Size: 18px;
-      font-Weight: "bold";
+      font-Weight: bold;
       margin-Bottom: 15px;
-      color: "#333";
+      color: #333;
       display: flex;
       justify-content: center;
     }
@@ -41,6 +41,10 @@ strong{
 .spanItem{
     text-transform: capitalize;
 }
+.tableContain{
+    overflow-y: auto;
+       height: 60vh;
+}
 .sectionRecent{
     margin-top: 20px;
     background-Color: #ffffff;
@@ -48,8 +52,7 @@ strong{
     border-Radius: 8px;
     box-Shadow: 0 2px 8px rgba(0,0,0,0.1);
     width: 760px;
-    overflow-y: auto;
-    height: 60vh;
+ 
 
 }
 .recentTable{
