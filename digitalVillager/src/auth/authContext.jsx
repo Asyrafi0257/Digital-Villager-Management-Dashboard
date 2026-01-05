@@ -7,21 +7,29 @@ export const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
-  const [role, setRole] = useState(""); // Add role state
+  const [role, setRole] = useState("");
+  const [kampung, setKampung] = useState(""); // ← ADD THIS LINE
 
   const checkSession = () => {
     axios.get("http://localhost/digital-villager-dashboard/backend/api/checkSession.php", {
       withCredentials: true,
     }).then(res => {
       console.log("Session check response:", res.data);
+      console.log("  - Logged In:", res.data.loggedIn);
+      console.log("  - Username:", res.data.username);
+      console.log("  - Role:", res.data.role);
+      console.log("  - Kampung:", res.data.kampung); // ← ADD THIS LOG
+      
       setLoggedIn(res.data.loggedIn || false);
       setUsername(res.data.username || "");
-      setRole(res.data.role || ""); // Set role from session
+      setRole(res.data.role || "");
+      setKampung(res.data.kampung || ""); // ← ADD THIS LINE
     }).catch(err => {
       console.error("Session check error:", err);
       setLoggedIn(false);
       setUsername("");
       setRole("");
+      setKampung(""); // ← ADD THIS LINE
     });
   };
 
@@ -41,7 +49,7 @@ export function AuthProvider({ children }) {
   const hasPermission = async (permissionName) => {
     try {
       const res = await axios.post(
-        "http://localhost/Digital-Villager-Management-Dashboard/digitalVillager/src/api/checkPermission.php",
+        "http://localhost/digital-villager-dashboard/backend/api/checkPermission.php",
         { permission: permissionName },
         { withCredentials: true }
       );
@@ -57,9 +65,11 @@ export function AuthProvider({ children }) {
       loggedIn, 
       username, 
       role,
+      kampung,        // ← ADD THIS LINE
       setLoggedIn, 
       setUsername, 
       setRole,
+      setKampung,     // ← ADD THIS LINE
       checkSession,
       hasRole,
       hasPermission

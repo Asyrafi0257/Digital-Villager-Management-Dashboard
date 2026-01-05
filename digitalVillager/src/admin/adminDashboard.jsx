@@ -1,29 +1,32 @@
 import { useState } from "react";
-import styles from "./dashboard.module.css";
+import styles from "./adminDashboard.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faDownload, faEye, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from "react-router-dom";
 
-import DashboardStat from "./dashStat";
+import HqDashboard from "./hqdashboard";
 import IncidentMap from "./incidentMap";
-import IncidentForm from "./incidentForm";
-import AnnouncementPopup from "../annoucement";
+import Logout from "./logout";
+import ManageIncident from "./ManageIncidents";
+import ManageUsers from "./ManageUsers";
+import ViewVictims from "./viewvictims";
 
 export default function Dashboard() {
   const [activeIndex, setActiveIndex] = useState(0);
   const navigate = useNavigate();
 
   const menuItems = [
-    { icon: faHouse, text: "Incident Map" },
-    { icon: faDownload, text: "Submit Incident" },
-    { icon: faEye, text: "Status incident" },
-    { icon: faEye, text: "Annoucement" },
-    { icon : faRightFromBracket, text : "Back Page" },
+    { icon: faHouse, text: "Dashboard" },
+    { icon: faDownload, text: "Manage Incident" },
+    { icon: faEye, text: "Incident Map" },
+    { icon: faEye, text: "View Victims" },
+    { icon: faEye, text: "Manage User" },
+    { icon : faRightFromBracket, text : "Logout" },
   ];
 
   //handle back page
   const handleBackPage = (index) => {
-    if(index === 4){
+    if(index === 6){
       navigate(-1);
     } else {
       setActiveIndex(index);
@@ -36,7 +39,7 @@ export default function Dashboard() {
         <div className={styles.sidebar}>
           <div className={styles.containTitle}>
             <div className={styles.title}>DVMD</div>
-            <p className={styles.titleVillager}>Villager</p>
+            <p className={styles.titleVillager}>Head Villager</p>
           </div>
 
           <div className={styles.list}>
@@ -60,12 +63,14 @@ export default function Dashboard() {
  
           {activeIndex === 0 && (
             <>
-              <IncidentMap />
+              <HqDashboard/>
             </>
           )}
-            {activeIndex === 1 && <IncidentForm />}
-            {activeIndex === 2 && <DashboardStat/>}
-            {activeIndex === 3 && <AnnouncementPopup/>}
+            {activeIndex === 1 && <ManageIncident/>}
+            {activeIndex === 2 && <IncidentMap/>}
+            {activeIndex === 3 && <ViewVictims/>}
+            {activeIndex === 4 && <ManageUsers/>}
+            {activeIndex === 5 && <Logout/>}
             
       </div>
 

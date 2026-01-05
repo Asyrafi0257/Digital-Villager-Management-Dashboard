@@ -1,24 +1,25 @@
 import { useState } from "react";
-import styles from "./dashboard.module.css";
+import styles from "./penghuluDash.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faDownload, faEye, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from "react-router-dom";
 
-import DashboardStat from "./dashStat";
-import IncidentMap from "./incidentMap";
-import IncidentForm from "./incidentForm";
-import AnnouncementPopup from "../annoucement";
+import Logout from "./logout";
+import ViewVictim from "./viewvictims";
+import MapIncident from "./incidentMap";
+import ManageIncident from "./ManageIncidents";
+import PenghuluDashboard from "./penghuluDashboard";
 
 export default function Dashboard() {
   const [activeIndex, setActiveIndex] = useState(0);
   const navigate = useNavigate();
 
   const menuItems = [
-    { icon: faHouse, text: "Incident Map" },
-    { icon: faDownload, text: "Submit Incident" },
-    { icon: faEye, text: "Status incident" },
-    { icon: faEye, text: "Annoucement" },
-    { icon : faRightFromBracket, text : "Back Page" },
+    { icon: faHouse, text: "Dashboard" },
+    { icon: faDownload, text: "Manage Incident" },
+    { icon: faEye, text: "Map Incident" },
+    { icon : faEye, text : "View Victims" },
+    { icon : faRightFromBracket, text : "Logout" },
   ];
 
   //handle back page
@@ -60,12 +61,13 @@ export default function Dashboard() {
  
           {activeIndex === 0 && (
             <>
-              <IncidentMap />
+              <PenghuluDashboard/>
             </>
           )}
-            {activeIndex === 1 && <IncidentForm />}
-            {activeIndex === 2 && <DashboardStat/>}
-            {activeIndex === 3 && <AnnouncementPopup/>}
+            {activeIndex === 1 && <ManageIncident/>}
+            {activeIndex === 2 && <MapIncident/>}
+            {activeIndex === 3 && <ViewVictim/>}
+            {activeIndex === 4 && <Logout/>}
             
       </div>
 

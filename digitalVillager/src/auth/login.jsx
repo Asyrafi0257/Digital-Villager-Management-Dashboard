@@ -1,8 +1,9 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { AuthContext } from "./authContext";
+import { AuthContext } from "../auth/authContext";
 import styles from "./login.module.css";
+
 
 export default function Login() {
   const [username, setUsernameInput] = useState("");
@@ -23,7 +24,22 @@ export default function Login() {
       if (res.data.success) {
         setMessage("Login successful!");
         await checkSession();
-        navigate("/dashboard");
+
+        // 👇 Navigate based on role
+        switch (res.data.role) {
+          case "kplbHQ":
+            navigate("/adminDashboard");
+            break;
+          case "ketua kampung":
+            navigate("/kampungDashboard");
+            break;
+          case "District Officer":
+            navigate("/officerDashboard");
+            break;
+          case "penghulu":
+            navigate("/penghuluDash");
+            break;
+        }
       } else {
         setMessage(res.data.error || "Login failed");
       }
@@ -32,6 +48,7 @@ export default function Login() {
       setMessage(error.response?.data?.error || "Error during login.");
     }
   };
+
 
   return (
     <div className={styles.container}>

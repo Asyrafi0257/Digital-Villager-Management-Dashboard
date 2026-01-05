@@ -12,6 +12,7 @@ if (!$data || empty($data['type']) || empty($data['title'])) {
 
 $type = $conn->real_escape_string($data['type']);
 $title = $conn->real_escape_string($data['title']);
+$kampung = isset($data['kampung']) ? $conn->real_escape_string($data['kampung']) : '';
 $description = isset($data['description']) ? $conn->real_escape_string($data['description']) : '';
 $status = isset($data['status']) ? $conn->real_escape_string($data['status']) : 'pending';
 $location = isset($data['location']) ? $conn->real_escape_string($data['location']) : '';
@@ -21,13 +22,14 @@ $reporter_name = isset($data['reporter_name']) ? $conn->real_escape_string($data
 $reporter_phone = isset($data['reporter_phone']) ? $conn->real_escape_string($data['reporter_phone']) : '';
 
 $stmt = $conn->prepare("INSERT INTO incidents 
-  (type, title, description, status, location, latitude, longitude, reporter_name, reporter_phone) 
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+  (type, title, kampung, description, status, location, latitude, longitude, reporter_name, reporter_phone) 
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 $stmt->bind_param(
-  "sssssddss", // ✅ 10 parameters: type, title, description, status, location, lat, lng, reporter_name, reporter_phone
+  "ssssssddss", // ✅ 10 parameters: type, title, kampung, description, status, location, lat, lng, reporter_name, reporter_phone
   $type,
   $title,
+  $kampung,
   $description,
   $status,
   $location,

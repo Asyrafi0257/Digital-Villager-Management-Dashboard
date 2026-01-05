@@ -35,7 +35,7 @@ export default function DashboardStats() {
 
   return (
     <div className={statsStyle.container}>
-      <h1 className={statsStyle.title}>Dashboard</h1>
+      <h1 className={statsStyle.title}>Recent Incident</h1>
 
 
       {/* Recent Incidents */}

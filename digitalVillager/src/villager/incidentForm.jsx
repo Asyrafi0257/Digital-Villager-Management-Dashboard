@@ -8,6 +8,7 @@ export default function IncidentForm() {
   const [form, setForm] = useState({
     type: "flood",
     title: "",
+    kampung: "Kampung A",
     description: "",
     status: "pending",
     location: "",
@@ -230,6 +231,7 @@ export default function IncidentForm() {
             title: form.title,
             description: form.description,
             status: form.status,
+            kampung: form.kampung,
             location: form.location,
             reporter_name: form.reporter_name,
             reporter_phone: form.reporter_phone,
@@ -245,6 +247,7 @@ export default function IncidentForm() {
           title: "",
           description: "",
           status: "pending",
+          kampung: "",
           location: form.location,
           latitude: form.latitude,
           longitude: form.longitude,
@@ -275,6 +278,7 @@ export default function IncidentForm() {
         location: form.location || "Emergency Location",
         latitude: form.latitude,
         longitude: form.longitude,
+        kampung: "",
         reporter_name: form.reporter_name || "Anonymous",
         reporter_phone: form.reporter_phone || "Not provided",
       };
@@ -424,6 +428,21 @@ export default function IncidentForm() {
           </div>
         )}
 
+        <label className={styles.label}>Your Village</label>
+        <select
+          name="kampung"
+          value={form.kampung}
+          onChange={handleChange}
+          className={styles.select}
+        >
+          <option value="Kampung A">Kampung A</option>
+          <option value="Kampung B">Kampung B</option>
+          <option value="Kampung C">Kampung C</option>
+          <option value="Kampung D">Kampung D</option>
+        </select>
+
+
+
         <label className={styles.label}>Your Name</label>
         <input
           name="reporter_name"
@@ -447,20 +466,21 @@ export default function IncidentForm() {
           📝 Submit Report
         </button>
       </form>
-        <div className={styles.btn}>
-           <button
-            onClick={sos}
-            className={styles.button}
-            style={{ 
-            background: "#c62828",
-            fontSize: "16px",
-            fontWeight: "bold",
-            padding: "14px",
-            }}
-        >
-            🆘 EMERGENCY SOS
-      </button> 
-        </div>
+
+      <div className={styles.btn}>
+        <button
+        onClick={sos}
+        className={styles.button}
+        style={{ 
+          background: "#c62828",
+          fontSize: "16px",
+          fontWeight: "bold",
+          padding: "14px"
+        }}
+      >
+        🆘 EMERGENCY SOS
+      </button>
+      </div>
       
 
       {message && (
@@ -477,14 +497,14 @@ export default function IncidentForm() {
       
       {/* Help text */}
       <div style={{
+        display:"flex",
+        flexDirection:"column",
         marginTop: "16px",
         padding: "12px",
         background: "#f5f5f5",
         borderRadius: "6px",
         fontSize: "12px",
-        color: "#666",
-        display:"flex",
-        flexDirection:"column",
+        color: "#666"
       }}>
         <strong>💡 Tips for accurate location:</strong>
         <ul style={{ marginTop: "6px", marginBottom: "0", paddingLeft: "20px" }}>

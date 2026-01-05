@@ -18,6 +18,7 @@
     color: "#333";
     margin-bottom: 10px;
     margin-top: 20px;
+    letter-spacing: 3px;
     }
 
 .sectionTitle{
@@ -41,23 +42,23 @@ strong{
 .spanItem{
     text-transform: capitalize;
 }
-.tableContain{
+/* .tableContain{
     overflow-y: auto;
        height: 60vh;
-}
+} */
 .sectionRecent{
     margin-top: 20px;
     background-Color: #ffffff;
     padding: 20px;
     border-Radius: 8px;
     box-Shadow: 0 2px 8px rgba(0,0,0,0.1);
-    width: 760px;
+    width: 1250px;
  
 
 }
 .recentTable{
-      width: "100%";
-      border-Collapse: "collapse";
+      width: 100%;
+      border-Collapse: collapse;
     }
 .tableHeader{
       background-Color: #f9f9f9;

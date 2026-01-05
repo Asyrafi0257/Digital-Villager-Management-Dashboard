@@ -1,24 +1,25 @@
 import { useState } from "react";
-import styles from "./dashboard.module.css";
+import styles from "./kampungDashboard.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faDownload, faEye, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from "react-router-dom";
 
-import DashboardStat from "./dashStat";
-import IncidentMap from "./incidentMap";
-import IncidentForm from "./incidentForm";
-import AnnouncementPopup from "../annoucement";
+import KKDashboard from "./kkDashboard";
+import RegisterForm from "./registervictim";
+import ViewVictim from "./viewvictims";
+import Logout from "../headVillager/logout";
+import ManageIncident from "../headVillager/ManageIncidents";
 
 export default function Dashboard() {
   const [activeIndex, setActiveIndex] = useState(0);
   const navigate = useNavigate();
 
   const menuItems = [
-    { icon: faHouse, text: "Incident Map" },
-    { icon: faDownload, text: "Submit Incident" },
-    { icon: faEye, text: "Status incident" },
-    { icon: faEye, text: "Annoucement" },
-    { icon : faRightFromBracket, text : "Back Page" },
+    { icon: faHouse, text: "Dashboard" },
+    { icon: faDownload, text: "Register Victim" },
+    { icon: faEye, text: "View Victim" },
+    { icon: faEye, text: "Managae Incident" },
+    { icon : faRightFromBracket, text : "Logout" },
   ];
 
   //handle back page
@@ -36,7 +37,7 @@ export default function Dashboard() {
         <div className={styles.sidebar}>
           <div className={styles.containTitle}>
             <div className={styles.title}>DVMD</div>
-            <p className={styles.titleVillager}>Villager</p>
+            <p className={styles.titleVillager}>Head Villager</p>
           </div>
 
           <div className={styles.list}>
@@ -60,12 +61,13 @@ export default function Dashboard() {
  
           {activeIndex === 0 && (
             <>
-              <IncidentMap />
+              <KKDashboard/>
             </>
           )}
-            {activeIndex === 1 && <IncidentForm />}
-            {activeIndex === 2 && <DashboardStat/>}
-            {activeIndex === 3 && <AnnouncementPopup/>}
+            {activeIndex === 1 && <RegisterForm/>}
+            {activeIndex === 2 && <ViewVictim/>}
+            {activeIndex === 3 && <ManageIncident/>}
+            {activeIndex === 4 && <Logout/>}
             
       </div>
 
