@@ -9,16 +9,16 @@
     flex-direction: row;
     justify-content: space-between;
     height: 30px;
-    padding: 10px;
+    padding: 25px;
     cursor:pointer
 }
 .logo {
     font-family: "BBH Bartle", sans-serif;
     font-weight: 400;
-    font-size: 25px;
+    font-size:35px;
     font-style: normal;
     margin-top: 5px;
-    margin-left: 20px;
+    margin-left: 30px;
     letter-spacing: 3px;
 }
 .menu {
@@ -29,14 +29,14 @@
 .menu ul{
     display: flex;
     flex-direction: row;
-    width: 380px;
+    width: 420px;
     
 }
 .menu ul li {
     justify-content: space-between;
     list-style-type: none;
     margin-left: 10px;
-    font-size:20px;
+    font-size:25px;
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;

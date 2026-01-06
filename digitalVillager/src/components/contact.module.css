@@ -11,7 +11,9 @@
 .contain{
     display: flex;
     flex-direction: row;
-    height: 90vh;
+    height: 70vh;
+    justify-content: space-around;
+    padding-top: 20px;
 }
 .contactInfo{
     width: 500px;
@@ -28,10 +30,14 @@
     font-family: "Bebas Neue", sans-serif;
     font-style: normal;
 }
+.title h2{
+    font-size: 40px;
+}
+
 .contactInfo p {
     font-weight: normal;
     font-weight: 100;
-    font-size: 15px;
+    font-size: 20px;
     margin: 15px;
 }
 .contact{
@@ -68,8 +74,8 @@
     font-size: 20px;
 }
 .form{
-    height: 300px;
-    width: 300px;
+    height: 390px;
+    width: 390px;
     background-color: #000;
     border: none;
     border-radius: 20px;
@@ -86,21 +92,22 @@
 }
 .label{
     letter-spacing: 2px;
-    font-size: 18px;
+    font-size: 20px;
 }
 .input{
-    height: 25px;
-    width: 200px;
+    height: 35px;
+    width: 300px;
     border-radius: 5px;
     padding: 5px;
     border: none;
+    margin-bottom: 10px;
 }
 input:focus{
     outline: none;
 }
 .textarea{
-    height: 100px;
-    width: 200px;
+    height: 150px;
+    width: 300px;
     border-radius: 5px;
     padding: 5px;
 }

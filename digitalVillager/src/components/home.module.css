@@ -16,8 +16,8 @@
    
 }
 .images img{
-   height: 250px;
-   width: 300px;
+   height: 350px;
+   width: 400px;
    border-radius: 15px;
 }
 .title {
@@ -40,9 +40,12 @@
     
 }
 .titleInfo h3 {
-    font-size: 45px;
+    font-size: 65px;
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
 
+.titleInfo p{
+    font-size: 20px;
+}
