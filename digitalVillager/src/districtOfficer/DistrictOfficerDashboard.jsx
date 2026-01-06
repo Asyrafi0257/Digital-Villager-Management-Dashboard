@@ -261,13 +261,15 @@ export default function DistrictOfficerDashboard() {
                     }}>
                       📄 Incident Details
                     </h3>
-
-                    <Detail label="Title" value={selectedIncident.title} />
-                    <Detail label="Type" value={selectedIncident.type} />
-                    <Detail label="Status" value={selectedIncident.status} />
-                    <Detail label="Kampung" value={selectedIncident.kampung} />
-                    <Detail label="Description" value={selectedIncident.description} />
-                    <Detail label="Reported At" value={selectedIncident.created_at} />
+                    <div>
+                      <Detail label="Title" value={selectedIncident.title} />
+                      <Detail label="Type" value={selectedIncident.type} />
+                      <Detail label="Status" value={selectedIncident.status} />
+                      <Detail label="Kampung" value={selectedIncident.kampung} />
+                      <Detail label="Description" value={selectedIncident.description} />
+                      <Detail label="Reported At" value={selectedIncident.created_at} />
+                    </div>
+                    
 
                     <hr style={{ margin: "20px 0", border: "none", borderTop: "2px solid #e0e0e0" }} />
 
@@ -375,8 +377,8 @@ function StatCard({ title, value, gradient = "linear-gradient(135deg, #667eea 0%
 
 function Detail({ label, value }) {
   return (
-    <p style={{ margin: "10px 0", fontSize: 14, lineHeight: 1.6 }}>
-      <strong style={{ color: "#667eea" }}>{label}:</strong>{" "}
+    <p style={{ margin: "10px 0", fontSize: 14, lineHeight: 1.6}}>
+      <strong style={{ color: "#667eea", float:"left" }}>{label}:</strong>{" "}
       <span style={{ color: "#555" }}>{value || "-"}</span>
     </p>
   );

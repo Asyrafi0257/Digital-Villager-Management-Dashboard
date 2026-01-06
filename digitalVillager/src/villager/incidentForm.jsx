@@ -33,47 +33,47 @@ export default function IncidentForm() {
     }
 
     setLocationStatus("🔍 Getting your location...");
-    
+
     // Request high accuracy location
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const { latitude, longitude, accuracy } = position.coords;
-        
+
         console.log("📍 Location detected:", {
           latitude,
           longitude,
           accuracy: `${accuracy.toFixed(0)}m`,
           timestamp: new Date(position.timestamp).toISOString()
         });
-        
+
         setLocationAccuracy(accuracy);
-        
+
         // Show accuracy info
-        const accuracyText = accuracy < 50 
-          ? "✅ High accuracy" 
-          : accuracy < 200 
-          ? "⚠️ Medium accuracy" 
-          : "⚠️ Low accuracy";
-        
+        const accuracyText = accuracy < 50
+          ? "✅ High accuracy"
+          : accuracy < 200
+            ? "⚠️ Medium accuracy"
+            : "⚠️ Low accuracy";
+
         setLocationStatus(`🔍 Reverse geocoding... (${accuracyText}, ±${accuracy.toFixed(0)}m)`);
-        
+
         try {
           // Try multiple geocoding services for better accuracy
           const placeName = await reverseGeocode(latitude, longitude);
-          
+
           setForm(prev => ({
             ...prev,
             location: placeName,
             latitude: latitude.toFixed(6),
             longitude: longitude.toFixed(6)
           }));
-          
+
           setLocationStatus(`✅ Location detected (±${accuracy.toFixed(0)}m accuracy)`);
-          
+
         } catch (err) {
           console.error("Reverse geocoding error:", err);
           setLocationStatus(`⚠️ Location detected but address lookup failed`);
-          
+
           // Still set coordinates even if address lookup fails
           setForm(prev => ({
             ...prev,
@@ -85,9 +85,9 @@ export default function IncidentForm() {
       },
       (error) => {
         console.error("Geolocation error:", error);
-        
+
         let errorMsg = "❌ Location error: ";
-        switch(error.code) {
+        switch (error.code) {
           case error.PERMISSION_DENIED:
             errorMsg += "Permission denied. Please allow location access.";
             break;
@@ -113,7 +113,7 @@ export default function IncidentForm() {
   // Improved reverse geocoding with multiple services
   const reverseGeocode = async (lat, lon) => {
     console.log("🌍 Attempting reverse geocoding...");
-    
+
     // Method 1: OpenStreetMap Nominatim (Primary)
     try {
       const osmResponse = await fetch(
@@ -124,15 +124,15 @@ export default function IncidentForm() {
           }
         }
       );
-      
+
       if (!osmResponse.ok) throw new Error("OSM API failed");
-      
+
       const osmData = await osmResponse.json();
       console.log("📍 OSM Response:", osmData);
-      
+
       // Build detailed address from OSM
       const addr = osmData.address || {};
-      
+
       // Priority order for location components
       const components = [
         addr.house_number,
@@ -142,13 +142,13 @@ export default function IncidentForm() {
         addr.state_district || addr.county,
         addr.state
       ].filter(Boolean);
-      
+
       if (components.length > 0) {
         const detailedAddress = components.slice(0, 3).join(", ");
         console.log("✅ Address found:", detailedAddress);
         return detailedAddress;
       }
-      
+
       // Fallback to display_name
       if (osmData.display_name) {
         return osmData.display_name.split(",").slice(0, 3).join(",");
@@ -156,25 +156,25 @@ export default function IncidentForm() {
     } catch (err) {
       console.warn("⚠️ OSM geocoding failed:", err);
     }
-    
+
     // Method 2: BigDataCloud (Backup)
     try {
       console.log("🔄 Trying BigDataCloud...");
       const bdcResponse = await fetch(
         `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`
       );
-      
+
       if (!bdcResponse.ok) throw new Error("BigDataCloud API failed");
-      
+
       const bdcData = await bdcResponse.json();
       console.log("📍 BigDataCloud Response:", bdcData);
-      
+
       const components = [
         bdcData.locality,
         bdcData.principalSubdivision,
         bdcData.countryName
       ].filter(Boolean);
-      
+
       if (components.length > 0) {
         const address = components.join(", ");
         console.log("✅ Address found (BigDataCloud):", address);
@@ -183,7 +183,7 @@ export default function IncidentForm() {
     } catch (err) {
       console.warn("⚠️ BigDataCloud geocoding failed:", err);
     }
-    
+
     // Method 3: Fallback to coordinates
     console.log("⚠️ All geocoding services failed, using coordinates");
     return `Location: ${lat.toFixed(4)}, ${lon.toFixed(4)}`;
@@ -209,18 +209,30 @@ export default function IncidentForm() {
       return;
     }
 
+    if (!form.reporter_phone.match(/^\+?[0-9\s\-]{7,15}$/) && form.reporter_phone.trim() !== "") {
+      setMessage("Error: Invalid phone number format");
+      return;
+    }
+
+    const digitsOnly = form.reporter_phone.replace(/\D/g, "");
+    if (digitsOnly.length < 10 || digitsOnly.length > 15) {
+      setMessage("Error: Phone number must be 10–15 digits");
+      return;
+    }
+
+
     try {
       console.log("Sending form data:", form);
       const { data } = await api.post("/incidents_create.php", form);
       console.log("Response data:", data);
-      
+
       if (data.error) {
         setMessage(`Error: ${data.error}`);
       } else {
         setMessage(
           data.created ? `✅ Incident created #${data.id}` : "Failed to create"
         );
-        
+
         // Emit event to refresh map with the new incident
         if (data.created) {
           const incidentData = {
@@ -240,7 +252,7 @@ export default function IncidentForm() {
           console.log("✅ Emitting incident data:", incidentData);
           eventEmitter.emit("incidentCreated", incidentData);
         }
-        
+
         // Reset form (but keep location for convenience)
         setForm({
           type: "flood",
@@ -268,7 +280,7 @@ export default function IncidentForm() {
       getLocation();
       return;
     }
-    
+
     try {
       const payload = {
         type: "sos",
@@ -282,14 +294,14 @@ export default function IncidentForm() {
         reporter_name: form.reporter_name || "Anonymous",
         reporter_phone: form.reporter_phone || "Not provided",
       };
-      
+
       console.log("🆘 Sending SOS:", payload);
       const { data } = await api.post("/incidents_create.php", payload);
       console.log("SOS response:", data);
-      
+
       if (data.created) {
         setMessage(`🆘 SOS DISPATCHED (#${data.id}) - Help is on the way!`);
-        
+
         // Emit event for SOS
         const sosData = {
           id: data.id,
@@ -318,7 +330,7 @@ export default function IncidentForm() {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Report Incident</h2>
-      
+
       {/* Location Accuracy Info */}
       {locationAccuracy && (
         <div style={{
@@ -337,7 +349,7 @@ export default function IncidentForm() {
           )}
         </div>
       )}
-      
+
       <form onSubmit={submit} className={styles.form}>
         <label className={styles.label}>Type</label>
         <select
@@ -400,12 +412,12 @@ export default function IncidentForm() {
             📍 Auto-Detect
           </button>
         </div>
-        
+
         {locationStatus && (
-          <p style={{ 
-            fontSize: "12px", 
-            color: locationStatus.includes("❌") || locationStatus.includes("⚠️") ? "#d32f2f" : "#388e3c", 
-            marginTop: "-12px", 
+          <p style={{
+            fontSize: "12px",
+            color: locationStatus.includes("❌") || locationStatus.includes("⚠️") ? "#d32f2f" : "#388e3c",
+            marginTop: "-12px",
             marginBottom: "12px",
             padding: "8px",
             background: locationStatus.includes("❌") || locationStatus.includes("⚠️") ? "#ffebee" : "#e8f5e9",
@@ -469,19 +481,19 @@ export default function IncidentForm() {
 
       <div className={styles.btn}>
         <button
-        onClick={sos}
-        className={styles.button}
-        style={{ 
-          background: "#c62828",
-          fontSize: "16px",
-          fontWeight: "bold",
-          padding: "14px"
-        }}
-      >
-        🆘 EMERGENCY SOS
-      </button>
+          onClick={sos}
+          className={styles.button}
+          style={{
+            background: "#c62828",
+            fontSize: "16px",
+            fontWeight: "bold",
+            padding: "14px"
+          }}
+        >
+          🆘 EMERGENCY SOS
+        </button>
       </div>
-      
+
 
       {message && (
         <p
@@ -494,11 +506,11 @@ export default function IncidentForm() {
           {message}
         </p>
       )}
-      
+
       {/* Help text */}
       <div style={{
-        display:"flex",
-        flexDirection:"column",
+        display: "flex",
+        flexDirection: "column",
         marginTop: "16px",
         padding: "12px",
         background: "#f5f5f5",
