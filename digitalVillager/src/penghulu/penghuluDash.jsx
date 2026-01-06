@@ -37,7 +37,7 @@ export default function Dashboard() {
         <div className={styles.sidebar}>
           <div className={styles.containTitle}>
             <div className={styles.title}>DVMD</div>
-            <p className={styles.titleVillager}>Villager</p>
+            <p className={styles.titleVillager}>Penghulu</p>
           </div>
 
           <div className={styles.list}>
