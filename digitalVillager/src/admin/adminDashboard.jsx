@@ -10,6 +10,7 @@ import Logout from "./logout";
 import ManageIncident from "./ManageIncidents";
 import ManageUsers from "./ManageUsers";
 import ViewVictims from "./viewvictims";
+import UpdateAnnoucement from "./updateAnnoucement";
 
 export default function Dashboard() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -21,12 +22,13 @@ export default function Dashboard() {
     { icon: faEye, text: "Incident Map" },
     { icon: faEye, text: "View Victims" },
     { icon: faEye, text: "Manage User" },
+    { icon: faEye, text: "Update Annoucement" },
     { icon : faRightFromBracket, text : "Logout" },
   ];
 
   //handle back page
   const handleBackPage = (index) => {
-    if(index === 6){
+    if(index === 7){
       navigate(-1);
     } else {
       setActiveIndex(index);
@@ -39,7 +41,7 @@ export default function Dashboard() {
         <div className={styles.sidebar}>
           <div className={styles.containTitle}>
             <div className={styles.title}>DVMD</div>
-            <p className={styles.titleVillager}>Head Villager</p>
+            <p className={styles.titleVillager}>Admin</p>
           </div>
 
           <div className={styles.list}>
@@ -70,7 +72,8 @@ export default function Dashboard() {
             {activeIndex === 2 && <IncidentMap/>}
             {activeIndex === 3 && <ViewVictims/>}
             {activeIndex === 4 && <ManageUsers/>}
-            {activeIndex === 5 && <Logout/>}
+            {activeIndex === 5 && <UpdateAnnoucement/>}
+            {activeIndex === 6 && <Logout/>}
             
       </div>
 
