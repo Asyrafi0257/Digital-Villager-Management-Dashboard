@@ -4,57 +4,30 @@ import styles from "./annoucement.module.css";
 import api from "./backend/api/apiClient";
 
 export default function AnnouncementPopup() {
-  const initialAnnouncements = [ 
-    { 
-      id: "init-1", 
-      title: "🚨 AMARAN BENCANA MALAYSIA - DISEMBER 2025", 
-      message: "HUJAN LEBAT BERTERUSAN dijangka berlaku. Risiko BANJIR tinggi di Kelantan, Terengganu, Pahang, Johor dan kawasan Sungai di paras bahaya. Risiko TANAH RUNTUH di kawasan berbukit dan Jalan Simpang Pulai.", 
-      date: "2025-12-01", 
-      type: "urgent", 
-    }, 
-    { 
-      id: "init-2", 
-      title: "⚠️ Kawasan Berisiko Tinggi - Banjir", 
-      message: "Kawasan Berisiko Tinggi Banjir: Kelantan, Terengganu, Pahang, Johor, dan kawasan Sungai di paras bahaya. Sila berwaspada dan ikuti arahan pihak berkuasa.", 
-      date: "2025-12-01", 
-      type: "warning", 
-    }, 
-    { 
-      id: "init-3", 
-      title: "🏔️ Amaran Tanah Runtuh", 
-      message: "Cerun TIDAK STABIL di seluruh negara. Elakkan kawasan berbukit dan jalan berisiko seperti Jalan Simpang Pulai. Hilly regions nationwide are at high risk.", 
-      date: "2025-12-01", 
-      type: "warning", 
-    }, 
-    { 
-      id: "init-4", 
-      title: "📋 Tindakan Keselamatan / Safety Actions", 
-      message: "1) Sediakan Beg Kecemasan 🎒\n2) Pantau Info Terkini (MetMalaysia, NADMA) 📻📱\n3) Patuhi Arahan Evakuasi 🏃\n4) Jauhi Kawasan Bahaya 🚫\n\nTalian Kecemasan: 999", 
-      date: "2025-12-01", 
-      type: "info", 
-    }, 
-  ];
+  
   const [isOpen, setIsOpen] = useState(false);
-  const [announcements, setAnnouncements] = useState([initialAnnouncements]);
+  const [announcements, setAnnouncements] = useState([]);
 
-  useEffect(() => { 
-    const fetchAnnouncements = async () => { 
-      try { 
-        const res = await api.get("get_annoucement.php"); 
-        if (res.data && res.data.length > 0) { // Merge API data with initial announcements, deduplicate by id 
-        const merged = [...initialAnnouncements, ...res.data]; 
-        const unique = merged.filter( 
-          (a, index, self) => 
-            index === self.findIndex((t) => t.id === a.id) 
-        ); 
-        setAnnouncements(unique); 
-      } 
-    } catch (err) { 
-      console.error("Error fetching announcements:", err); // fallback: keep initial announcements setAnnouncements(initialAnnouncements); 
-    } 
-  }; 
-  fetchAnnouncements(); 
+ useEffect(() => {
+  const fetchAnnouncements = async () => {
+    try {
+      const res = await api.get("get_annoucement.php");
+      if (res.data && res.data.length > 0) {
+        setAnnouncements(prev => {
+          const merged = [...prev, ...res.data];
+          // remove duplicates by id
+          return merged.filter(
+            (a, index, self) => index === self.findIndex(t => t.id === a.id)
+          );
+        });
+      }
+    } catch (err) {
+      console.error("Error fetching announcements:", err);
+    }
+  };
+  fetchAnnouncements();
 }, []);
+
 
   return (
 
